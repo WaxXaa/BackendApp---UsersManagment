@@ -11,6 +11,11 @@ jwt
 
 relationships
 
+user table
+userId    |   UserName    |   Name    |   Password    |   gender    |   age   |   email
+
+
+
 folowerUser table
 id  |   userId  | folowerId
 1   |   4793    | 8789
@@ -21,12 +26,14 @@ id  |   userId  | folowerId
 
 
 post table
-postId  |   likes   |   dislikes    |   postIdComment   |   UserId    |   category    |   cratedAt    |   updateAt
-7348    |   20      |   5           |   2432            |   9843      |   crypto
-2432    |   100     |   30          |   null            |   6773      |   crypto
-4745    |   10      |   1           |   2432            |   4643      |   crypto
-5196    |   2       |   0           |   2432            |   4793      |   crypto
+postId  |   rating  |   UserId    |   categoryId    |   cratedAt    |   updateAt    |   content
+7348    |   20      |   9843      |   crypto
+2432    |   100     |   6773      |   crypto
+4745    |   10      |   4643      |   crypto
+5196    |   2       |   4793      |   crypto
 
+comments table
+id    |   PostCommentId   |   CommentedPostId
 
 
 savePost table
@@ -34,7 +41,7 @@ postId  |   userId
 
 
 category table
-categoryId    |   postId    |   categoryName
+categoryId    |   categoryName
 
 folowerCategory table
 id    |   categoryId    |   folowerId

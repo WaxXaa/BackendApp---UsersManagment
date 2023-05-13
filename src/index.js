@@ -3,6 +3,8 @@ dotenv.config()
 const sequelize = require('./Config/db')
 const server = require('./Config/http.js')
 const init = async () => {
+  await sequelize.sync({ force: true })
+    .then(() => console.log('All models were synchronized successfully'))
   await sequelize.authenticate()
     .then(() => console.log('Data Base conected'))
     .catch((err) => console.log('data base connection error', err))
