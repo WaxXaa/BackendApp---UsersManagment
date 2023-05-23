@@ -25,5 +25,5 @@ Post.belongsToMany(Post, {
   through: Comment,
   unique: false
 })
-
+  (async () => await Comment.sync({ force: true }))()
 module.exports = Comment

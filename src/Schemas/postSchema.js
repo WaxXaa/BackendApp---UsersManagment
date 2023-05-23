@@ -4,7 +4,7 @@ const User = require('./userSchema')
 const Category = require('./categorySchema')
 const Post = sequelize.define('Post', {
   PostId: {
-    type: DataTypes.UUIDV4,
+    type: DataTypes.STRING,
     primaryKey: true
   },
   Rating: {
@@ -25,8 +25,9 @@ const Post = sequelize.define('Post', {
   UpdatedAt: DataTypes.BIGINT
 }, { timestamps: false }
 )
-Post.belongsTo(User)
+// Post.belongsTo(User)
 Post.belongsTo(Category)
 
-
+// const f = async () => await Post.sync({ force: true })
+// f()
 module.exports = Post

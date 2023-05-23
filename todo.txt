@@ -45,3 +45,25 @@ categoryId    |   categoryName
 
 folowerCategory table
 id    |   categoryId    |   folowerId
+
+
+
+
+
+
+
+
+
+
+
+
+functional requirements
+The user can register in the application, entering the necessary data.-----> route------>Post------>jwt&bcrypt&db
+The email must be unique for each user.
+The user will be able to authenticate himself before the application using his email and password.
+If the authentication is valid, the application will return an identifier to the user that will serve to prove their identity to the application when they want to change/delete their data.
+The user will be able to obtain all his data except his password, using his identifier.
+The user will be able to update his name and surname, the identifier will be necessary.
+The user will be able to update his email, the current identifier and password will be necessary.
+The user will be able to update his password, the current identifier and password will be necessary.
+The user will be able to delete all their data from the platform, the current identifier and password will be necessary.

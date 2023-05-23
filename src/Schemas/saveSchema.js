@@ -27,4 +27,5 @@ Post.belongsToMany(User, {
   through: Save,
   unique: false
 })
+  (async () => await Save.sync({ force: true }))()
 module.exports = Save

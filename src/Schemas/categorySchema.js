@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize')
 const Post = require('./postSchema')
 const Category = sequelize.define("Category", {
   CategoryId: {
-    type: DataTypes.UUIDV4,
+    type: DataTypes.STRING,
     primaryKey: true
   },
   CategoryName: {
@@ -11,5 +11,13 @@ const Category = sequelize.define("Category", {
     allowNull: false
   }
 }, { timestamps: false })
-Category.hasMany(Post)
+
+// Category.hasMany(Post, {
+//   type: DataTypes.UUIDV4,
+//   foreignKey: {
+//     allowNull: false
+//   }
+// })
+// const f = async () => await Category.sync({ force: true })
+// f()
 module.exports = Category

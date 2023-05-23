@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize')
 const Post = require('./postSchema')
 const User = sequelize.define('User', {
   UserId: {
-    type: DataTypes.UUIDV4,
+    type: DataTypes.STRING,
     primaryKey: true
   },
   UserName: {
@@ -23,7 +23,7 @@ const User = sequelize.define('User', {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-      min: 1,
+      min: 2,
       max: 16,
       isEmail: false,
       isUrl: false
@@ -51,7 +51,7 @@ const User = sequelize.define('User', {
     type: DataTypes.DATE
   },
   Email: {
-    type: DataTypes.Email,
+    type: DataTypes.STRING,
     unique: true,
     validate: {
       isEmail: true
@@ -60,13 +60,15 @@ const User = sequelize.define('User', {
   CreatedAt: DataTypes.BIGINT,
   UpdatedAt: DataTypes.BIGINT
 },
-{ timestamps: false }
+  { timestamps: false }
 )
 User.hasMany(Post, {
-  type: DataTypes.UUIDV4,
+  type: DataTypes.STRING,
   foreignKey: {
     allowNull: false
   }
 })
+// const f = async () => await User.sync({ force: true })
+// f()
 
 module.exports = User
