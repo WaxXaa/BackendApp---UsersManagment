@@ -25,5 +25,4 @@ User.belongsToMany(User, {
   through: FollowerUser,
   unique: false
 })
-  (async () => await FollowerUser.sync({ force: true }))()
 module.exports = FollowerUser

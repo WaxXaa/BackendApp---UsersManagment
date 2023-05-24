@@ -26,5 +26,4 @@ User.belongsToMany(Category, {
   through: FollowerCategory,
   unique: false
 })
-  (async () => await FollowerCategory.sync({ force: true }))()
-module.exports = FollowerUser
+module.exports = FollowerCategory

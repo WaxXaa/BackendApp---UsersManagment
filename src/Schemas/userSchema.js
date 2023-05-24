@@ -13,9 +13,6 @@ const User = sequelize.define('User', {
     validate: {
       min: 1,
       max: 10,
-      isAlphanumeric: true,
-      isEmail: false,
-      isUrl: false,
       isLowercase: true
     }
   },
@@ -24,9 +21,7 @@ const User = sequelize.define('User', {
     allowNull: false,
     validate: {
       min: 2,
-      max: 16,
-      isEmail: false,
-      isUrl: false
+      max: 16
     }
   },
   Password: {
@@ -34,10 +29,7 @@ const User = sequelize.define('User', {
     allowNull: false,
     validate: {
       min: 8,
-      max: 30,
-      isAlphanumeric: true,
-      isEmail: false,
-      isUrl: false
+      max: 30
     }
   },
   Gender: {
