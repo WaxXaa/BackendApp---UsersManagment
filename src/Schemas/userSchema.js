@@ -39,8 +39,8 @@ const User = sequelize.define('User', {
       max: 1
     }
   },
-  Birthdate: {
-    type: DataTypes.DATE
+  BirthDate: {
+    type: DataTypes.DATEONLY
   },
   Email: {
     type: DataTypes.STRING,
