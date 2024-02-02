@@ -1,4 +1,4 @@
-const http = require('http')
-const app = require('./express')
-const server = http.createServer(app)
-module.exports = server
+import { createServer } from 'http'
+import app from './express.js'
+const server = createServer(app)
+export default server

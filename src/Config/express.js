@@ -1,6 +1,6 @@
-const exprees = require('express')
-const userRouter = require('../Routes/user.routes')
-const app = exprees()
-app.use(exprees.json())
+import express, { json } from 'express'
+import userRouter from '../routes/user.routes.js'
+const app = express()
+app.use(json())
 app.use('/user', userRouter)
-module.exports = app
+export default app

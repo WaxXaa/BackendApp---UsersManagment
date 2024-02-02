@@ -1,5 +1,5 @@
 const { hashSync, compareSync, genSaltSync } = require("bcrypt")
-const User = require("../Schemas/userSchema")
+const User = require("../../schemas/userSchema")
 
 const userUdatePasswordController = async (req, res) => {
   const { Id, nPassword } = req.body
@@ -12,3 +12,4 @@ const userUdatePasswordController = async (req, res) => {
   await User.update({ Password: newPasswordHash }, { where: { Id } })
   return res.send('updated')
 }
+module.exports = userUdatePasswordController

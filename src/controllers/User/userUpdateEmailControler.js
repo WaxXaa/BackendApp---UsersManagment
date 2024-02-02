@@ -1,5 +1,5 @@
 const { compareSync } = require("bcrypt")
-const User = require("../Schemas/userSchema")
+const User = require("../../Schemas/userSchema")
 
 const userUpdateEmailController = async (req, res) => {
   const { Id, nEmail, Password } = req.body
@@ -12,3 +12,4 @@ const userUpdateEmailController = async (req, res) => {
   await User.update({ email: nEmail }, { where: { Id } })
   return res.send('updated')
 }
+module.exports = userUpdateEmailController

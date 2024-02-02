@@ -1,6 +1,6 @@
-const User = require("../Schemas/userSchema")
+const User = require("../../Schemas/userSchema")
 
-const userUpdateNameConstroller = async (req, res) => {
+const userUpdateNameController = async (req, res) => {
   const { Id, nName, nUserName } = req.body
   const existingUser = await User.findByPk(Id)
   if (!existingUser) return res.status(401).send({ errors: ['unauthorized user'] })
@@ -9,3 +9,4 @@ const userUpdateNameConstroller = async (req, res) => {
   const resp = await User.update({ Name: nName, UseraName: nUserName }, { where: { Id } })
   return res.send('updated')
 }
+module.exports = userUpdateNameController
