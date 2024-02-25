@@ -1,15 +1,13 @@
-const { compareSync } = require("bcrypt")
-const User = require("../../Schemas/userSchema")
-
+import updatedEmailService from '../../services/updateEmailService.js'
 const userUpdateEmailController = async (req, res) => {
-  const { Id, nEmail, Password } = req.body
-  const user = await User.findByPk(Id)
-  if (!user) return res.status(401).send({ errors: ['unauthorized user'] })
-  const passwordVerification = compareSync(Password, user.Password)
-  if (!passwordVerification) return res.status(401).send({ errors: ['unauthorized user'] })
-  const existingEmail = await User.findOne({ attributes: ['Email'], where: { Email: nEmail } })
-  if (existingEmail) return res.status(409).send({ errors: ['email not available'] })
-  await User.update({ email: nEmail }, { where: { Id } })
-  return res.send('updated')
+  try {
+    const { id } = req
+    const { newEmail } = req.body
+    await updatedEmailService(id, newEmail)
+    res.status(200).send('Email  has been successfully udate')
+  } catch (error) {
+    const status = error.status || 500
+    res.status(status).json({ message: error.message || 'Internal server error' })
+  }
 }
-module.exports = userUpdateEmailController
+export default userUpdateEmailController

@@ -58,7 +58,15 @@ id    |   categoryId    |   folowerId
 
 
 functional requirements
-The user can register in the application, entering the necessary data.-----> route------>Post------>jwt&bcrypt&db
+users will be able to view all posts from different categories.
+User can search by keywords or tags, and sort the result based on ratings, date posted etc.
+-the user must be register to do the following  actions:
+buy
+post
+save a post for later and see it in their saved list.
+comment
+
+The user can register in the application, entering the necessary data{first name, last name,  email, password and birthdate}
 The email must be unique for each user.
 The user will be able to authenticate himself before the application using his email and password.
 If the authentication is valid, the application will return an identifier to the user that will serve to prove their identity to the application when they want to change/delete their data.

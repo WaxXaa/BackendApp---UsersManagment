@@ -1,19 +1,13 @@
-const { compareSync } = require("bcrypt")
-const User = require("../../Schemas/userSchema")
-//const FollowerUser = require("../../Schemas/follwerUserSchema")
-const { Op, where } = require("sequelize")
-const Post = require("../../Schemas/postSchema")
-//const Save = require("../../Schemas/saveSchema")
-
+import userUnregisterService from '../../services/userUnregisterService.js'
 const userUnregisterController = async (req, res) => {
-  const { Id, Password } = req.body
-  const user = await User.findByPk(Id)
-  if (!user) return res.status(401).send({ errors: ['unauthorized user'] })
-  const passwordVerification = compareSync(Password, user.Password)
-  if (!passwordVerification) return res.status(401).send({ errors: ['unauthorized user'] })
-  await user.destroy()
-  // await FollowerUser.destroy({ where: { [Op.or]: [{ UserId: Id }, { FollowerId: Id }] } })
-  await Post.destroy({ where: { UserId: Id } })
-  return res.send()
+  try {
+    const { id } = req
+    const { password } = req.body
+    await userUnregisterService(id, password) //service call
+    res.status(200).send('User successfully unregistered')
+  } catch (error) {
+    const status = error.status || 500
+    res.status(status).json({ message: error.message || 'Internal server error' })
+  }
 }
-module.exports = userUnregisterController
+export default userUnregisterController
