@@ -1,12 +1,18 @@
-const User = require("../../Schemas/userSchema")
+import userUpdateNamesService from '../../services/updateUserNamesService.js'
+const userUpdateNamesController = async (req, res) => {
+  try {
+    const { userId, new_fname, new_lname, new_userName } = req.body;
+    const result = await userUpdateNamesService({ userId, new_fname, new_lname, new_userName });
 
-const userUpdateNameController = async (req, res) => {
-  const { Id, nName, nUserName } = req.body
-  const existingUser = await User.findByPk(Id)
-  if (!existingUser) return res.status(401).send({ errors: ['unauthorized user'] })
-  const existingUserName = await User.findOne({ attributes: ['UserName'], where: { UseraName: nUserName } })
-  if (existingUserName) return res.status(409).send({ errors: ['username not available'] })
-  const resp = await User.update({ Name: nName, UseraName: nUserName }, { where: { Id } })
-  return res.send('updated')
+    return res.status(200).json({ success: true, message: result.message });
+  } catch (error) {
+    const status = error.status
+    return res.status(status || 500).json({ success: false, message: error.message || "Internal server error." });
+  }
 }
-module.exports = userUpdateNameController
+export default userUpdateNamesController
+
+
+
+
+

@@ -1,11 +1,13 @@
-import userRegisterController from './userRegisterController'
-import userLoginController from './userLoginController'
-import userProfileConfigController from './userProfileConfigController'
-import userUnregisterController from './userUnregisterController'
-import userUpdateNameController from './userUpdateNameController'
-import userUpdateEmailController from './userUpdateEmailControler'
-import userUpdatePasswordController from './userUpdatePasswordController'
+import userRegisterController from './userRegisterController.js'
+import userLoginController from './userLoginController.js'
+import userProfileConfigController from './userProfileConfigController.js'
+import userUnregisterController from './userUnregisterController.js'
+import userUpdateNameController from './userUpdateNameController.js'
+import userUpdateEmailController from './userUpdateEmailControler.js'
+import userUpdatePasswordController from './userUpdatePasswordController.js'
+import sendEmailController from './sendEmailController.js'
 export default {
+  sendEmailController,
   userRegisterController,
   userLoginController,
   userProfileConfigController,

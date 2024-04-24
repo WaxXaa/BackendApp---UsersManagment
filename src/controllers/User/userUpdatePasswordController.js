@@ -1,15 +1,18 @@
-const { hashSync, compareSync, genSaltSync } = require("bcrypt")
-const User = require("../../schemas/userSchema")
+import userUpdatePasswordService from "../../services/userUpdatePasswordService.js";
 
-const userUdatePasswordController = async (req, res) => {
-  const { Id, nPassword } = req.body
-  const user = await User.findByPk(Id)
-  if (!Id) return res.status(401).send({ errors: ['unauthorized user'] })
-  const passwordVerification = compareSync(nPassword, user.Password)
-  if (!passwordVerification) return res.status(401).send({ errors: ['unauthorized user'] })
-  const salt = genSaltSync(parseInt(process.env.SALT_ROUNDS))
-  const newPasswordHash = hashSync(nPassword, salt)
-  await User.update({ Password: newPasswordHash }, { where: { Id } })
-  return res.send('updated')
-}
-module.exports = userUdatePasswordController
+const userUpdatePasswordController = async (req, res) => {
+  try {
+    const { id, newPassword } = req.body;
+    const result = await userUpdatePasswordService.updatePassword(id, newPassword);
+    if (result.success) {
+      return res.send('Password updated');
+    } else {
+      return res.status(401).send({ errors: ['Unauthorized user'] });
+    }
+  } catch (error) {
+    console.error("Error updating password:", error);
+    return res.status(500).send({ errors: ['Internal Server Error'] });
+  }
+};
+
+export default userUpdatePasswordController;

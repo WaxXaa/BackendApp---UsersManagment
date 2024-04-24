@@ -1,11 +1,23 @@
 import { config } from 'dotenv'
 config()
-const mongoose = require('mongoose');
+import mongoose from 'mongoose'
 
-function conectarBD() {
-  const dbURL = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@cluster0.i3rekho.mongodb.net/?retryWrites=true&w=majority`
+async function conectarBD() {
+  // mongodb+srv://alesemestre3:<password>@cluster0.i3rekho.mongodb.net/
+  //mongodb + srv://alesemestre3:<password>@cluster0.i3rekho.mongodb.net
+  const dbURI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.i3rekho.mongodb.net/`
 
-  mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true });
+  mongoose.connect(dbURI);
+  // try {
+  //   // Connect to the MongoDB cluster
+  //   mongoose.connect(
+  //     dbURI,
+  //     { useNewUrlParser: true, useUnifiedTopology: true },
+  //     () => console.log(" Mongoose is connected"),
+  //   );
+  // } catch (e) {
+  //   console.log("could not connect");
+  // }
 
   const db = mongoose.connection;
 
@@ -29,5 +41,5 @@ function conectarBD() {
 
 }
 
-module.exports = conectarBD;
+export default conectarBD;
 

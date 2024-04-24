@@ -1,12 +1,19 @@
+import mongooseValidator from 'mongoose-unique-validator'
+
 import mongoose, { model } from 'mongoose';
 const { Schema } = mongoose;
-const mongooseValidator = require('mongoose-unique-validator')
 
 const userSchema = new Schema({
   userId: {
     type: String,
     required: true,
     unique: true,
+  },
+  userName: {
+    type: String,
+    minlength: 2,
+    maxlength: 16,
+    unique: true
   },
   fname: {
     type: String,
@@ -22,7 +29,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 8,
-    maxlength: 30,
+    maxlength: 120,
   },
   birthDate: {
     type: Date,

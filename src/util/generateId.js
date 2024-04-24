@@ -1,5 +1,4 @@
-const { v4: uuidV4 } = require('uuid')
-const newId = () => {
-  return uuidV4()
+const newEmailVerificationCode = () => {
+  return Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000
 }
-module.exports = { newId }
+export default newEmailVerificationCode

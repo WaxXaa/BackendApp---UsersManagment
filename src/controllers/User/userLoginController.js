@@ -1,4 +1,4 @@
-import { userLoginService } from "../../services/userLoginService.js";
+import userLoginService from "../../services/userLoginService.js";
 const userLoginController = async (req, res) => {
   try {
     const { credential } = req.body

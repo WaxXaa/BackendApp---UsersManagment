@@ -1,7 +1,7 @@
 import userModel from '../models/userModel.js'
 const profileConfigService = async (id) => {
   try {
-    const dataProfile = await userModel(id)
+    const dataProfile = await userModel.getUserInfoById(id)
     if (!dataProfile) {
       throw { status: 401, message: 'unauthorized user' }
     }

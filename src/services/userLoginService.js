@@ -1,6 +1,7 @@
 import { compareSync } from "bcrypt"
-import { sign } from "jsonwebtoken"
-import { UserModel } from '../../models/userModel.js'
+import jwt from "jsonwebtoken"
+const { sign } = jwt
+import UserModel from '../models/userModel.js'
 const userLoginService = async ({ email, password }) => {
   const existingUser = await UserModel.findEmail(email)
   if (!existingUser) {

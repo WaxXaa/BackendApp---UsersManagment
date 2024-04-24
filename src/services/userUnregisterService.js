@@ -1,5 +1,5 @@
 import { compareSync } from "bcrypt"
-import userModel from '../../models/userModel.js'
+import userModel from '../models/userModel.js'
 const userUnregisterService = async (id, password) => {
   try {
     const userData = await userModel.getUserInfoById(id)
